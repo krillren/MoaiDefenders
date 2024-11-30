@@ -27,7 +27,9 @@ public class Laser : MonoBehaviour
             }
             if (hit.collider.gameObject.tag == "Scindeur")
             {
-                hit.collider.gameObject.GetComponent<Scindeur>().ActivateLaser(type);
+                Scindeur scindeur = hit.collider.gameObject.GetComponent<Scindeur>();
+                scindeur.ActivateLaser(type);
+                scindeur.castDirection = Orientation;
             }
             if (hit.collider.gameObject.tag == "Inverter")
             {
