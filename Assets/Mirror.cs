@@ -3,7 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Mirror : MonoBehaviour
+public class Mirror : LaserGenerator
 {
-    public Vector2 Orientation = Vector2.left;
+    public void Awake()
+    {
+        laser = GetComponentInChildren<Laser>();
+    }
+    public void Update()
+    {
+        if (isGenerating)
+        {
+            GetComponent<BoxCollider2D>().enabled = false;
+            laser.Cast(transform.position, Orientation);
+            GetComponent<BoxCollider2D>().enabled = true;
+        }
+    }
 }
