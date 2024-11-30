@@ -16,7 +16,7 @@ public class DragAndDropManager : MonoBehaviour
             {
                 var point = hit.point;
                 Debug.Log(hit.collider.gameObject);
-                if (hit.collider.gameObject.tag == "Dragable" || hit.collider.gameObject.tag == "Mirror")
+                if (hit.collider.gameObject.tag == "Dragable" || hit.collider.gameObject.tag == "Mirror" || hit.collider.gameObject.tag == "Scindeur")
                 {
                     hit.collider.gameObject.GetComponent<DragAndDropEntity>().isDragged = true;
                 }

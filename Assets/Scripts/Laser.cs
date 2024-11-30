@@ -23,6 +23,10 @@ public class Laser : MonoBehaviour
             {
                 hit.collider.gameObject.GetComponent<Mirror>().isGenerating = true;
             }
+            if (hit.collider.gameObject.tag == "Scindeur")
+            {
+                hit.collider.gameObject.GetComponent<Scindeur>().isGenerating = true;
+            }
         }
         else
         {
