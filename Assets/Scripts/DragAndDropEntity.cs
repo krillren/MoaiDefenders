@@ -6,11 +6,13 @@ using UnityEngine.Tilemaps;
 public class DragAndDropEntity : MonoBehaviour
 {
     public bool isDragged = false;
+    public  DragAndDropManager dragManager;
     Vector2 originalPosition;
     public Grid tilemap;
     private void Awake()
     {
         originalPosition = transform.position;
+        dragManager = FindAnyObjectByType<DragAndDropManager>();
     }
     private void Update()
     {
@@ -33,6 +35,7 @@ public class DragAndDropEntity : MonoBehaviour
             var spriteRenderer = GetComponent<SpriteRenderer>();
             transform.position = new Vector3(tilePos.x + spriteRenderer.bounds.size.x / 2, tilePos.y + spriteRenderer.bounds.size.y / 2, transform.position.z);
             originalPosition = transform.position;
+            dragManager.PlayLasers();
         }
         else
         {

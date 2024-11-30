@@ -23,4 +23,11 @@ public class Scindeur : Entity
         }
         GetComponent<BoxCollider2D>().enabled = true;
     }
+
+    public override void StopGenerating()
+    {
+        base.StopGenerating();
+        laser1.Reset();
+        laser2.Reset();
+    }
 }

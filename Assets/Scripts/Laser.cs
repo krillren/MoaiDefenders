@@ -37,5 +37,7 @@ public class Laser : MonoBehaviour
     }
     public void Reset()
     {
+        lineRenderer.SetPosition(0,transform.position);
+        lineRenderer.SetPosition(1,transform.position);
     }
 }

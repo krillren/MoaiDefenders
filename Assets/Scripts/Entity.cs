@@ -5,4 +5,8 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public bool isGenerating;
+    public virtual void StopGenerating()
+    {
+        isGenerating = false;
+    }
 }

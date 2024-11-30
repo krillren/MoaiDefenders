@@ -13,9 +13,18 @@ public class LaserGenerator : Entity
         laser = GetComponentInChildren<Laser>();
     }
     private void Update()
-    { 
-        GetComponent<BoxCollider2D>().enabled = false;
-        laser.Cast(transform.position,Orientation);
-        GetComponent<BoxCollider2D>().enabled = true;
+    {
+        if (isGenerating)
+        {
+            GetComponent<BoxCollider2D>().enabled = false;
+            laser.Cast(transform.position, Orientation);
+            GetComponent<BoxCollider2D>().enabled = true;
+        }
+    }
+    public override void StopGenerating()
+    {
+        base.StopGenerating();
+        laser.Reset();
+
     }
 }

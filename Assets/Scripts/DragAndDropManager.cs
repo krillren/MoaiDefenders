@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class DragAndDropManager : MonoBehaviour
 {
+    public GameObject Entities;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -16,9 +17,10 @@ public class DragAndDropManager : MonoBehaviour
             {
                 var point = hit.point;
                 Debug.Log(hit.collider.gameObject);
-                if (hit.collider.gameObject.tag == "Dragable" || hit.collider.gameObject.tag == "Mirror" || hit.collider.gameObject.tag == "Scindeur")
+                if (hit.collider.gameObject.tag == "LaserGenerator" || hit.collider.gameObject.tag == "Mirror" || hit.collider.gameObject.tag == "Scindeur")
                 {
                     hit.collider.gameObject.GetComponent<DragAndDropEntity>().isDragged = true;
+                    PauseLasers();
                 }
             }
         }
@@ -28,5 +30,20 @@ public class DragAndDropManager : MonoBehaviour
         Vector3 p = Input.mousePosition;
         Vector3 pos = Camera.main.ScreenToWorldPoint(p);
         return pos;
+    }
+
+    public void PauseLasers()
+    {
+        foreach(Entity ent in Entities.GetComponentsInChildren<Entity>())
+        {
+            ent.StopGenerating();
+        }
+    }
+    public void PlayLasers()
+    {
+        foreach (Entity ent in Entities.GetComponentsInChildren<Entity>())
+        {
+            if(ent.gameObject.tag == "LaserGenerator") ent.isGenerating = true;
+        }
     }
 }
