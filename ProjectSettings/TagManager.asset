@@ -8,6 +8,7 @@ TagManager:
   - Mirror
   - Scindeur
   - LaserGenerator
+  - Inverter
   layers:
   - Default
   - TransparentFX
