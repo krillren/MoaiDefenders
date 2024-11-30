@@ -4,12 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class LaserGenerator : MonoBehaviour
+public class LaserGenerator : Entity
 {
     public Laser laser;
-    public bool isGenerating;
     public Vector2 Orientation = Vector2.left;
-    public Grid tilemap;
     private void Awake()
     {
         laser = GetComponentInChildren<Laser>();

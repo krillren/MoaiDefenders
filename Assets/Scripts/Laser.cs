@@ -22,7 +22,6 @@ public class Laser : MonoBehaviour
             if (hit.collider.gameObject.tag == "Mirror")
             {
                 hit.collider.gameObject.GetComponent<Mirror>().isGenerating = true;
-               
             }
         }
         else
