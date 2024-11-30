@@ -17,7 +17,7 @@ public class DragAndDropManager : MonoBehaviour
             {
                 var point = hit.point;
                 Debug.Log(hit.collider.gameObject);
-                if (hit.collider.gameObject.tag == "LaserGenerator" || hit.collider.gameObject.tag == "Mirror" || hit.collider.gameObject.tag == "Scindeur")
+                if (hit.collider.gameObject.tag == "LaserGenerator" || hit.collider.gameObject.tag == "Mirror" || hit.collider.gameObject.tag == "Scindeur" || hit.collider.gameObject.tag == "Inverter")
                 {
                     hit.collider.gameObject.GetComponent<DragAndDropEntity>().isDragged = true;
                     PauseLasers();

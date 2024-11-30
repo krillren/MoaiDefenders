@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Inverter : Entity
 {
@@ -25,5 +26,10 @@ public class Inverter : Entity
         isGenerating = true;
         laser.type = type;
         orientation = _orientation;
+    }
+    public override void StopGenerating()
+    {
+        base.StopGenerating();
+        laser.Reset();  
     }
 }

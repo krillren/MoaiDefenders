@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class Mirror : LaserGenerator
+public class Mirror : Entity
 {
+    public Laser laser;
+    public Vector2 Orientation;
     public void Awake()
     {
         laser = GetComponentInChildren<Laser>();
@@ -22,5 +25,10 @@ public class Mirror : LaserGenerator
     {
         isGenerating = true;
         laser.type = newType;
+    }
+    public override void StopGenerating()
+    {
+        base.StopGenerating();
+        laser.Reset();
     }
 }
