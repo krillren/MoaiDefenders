@@ -30,4 +30,10 @@ public class Scindeur : Entity
         laser1.Reset();
         laser2.Reset();
     }
+    public void ActivateLaser(int newType)
+    {
+        isGenerating = true;
+        laser1.type = newType;
+        laser2.type = newType;
+    }
 }

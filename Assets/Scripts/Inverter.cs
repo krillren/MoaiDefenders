@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class Mirror : LaserGenerator
+public class Inverter : Entity
 {
+    public Laser laser;
+    public Vector2 orientation = Vector2.zero;
+    public int type;
     public void Awake()
     {
         laser = GetComponentInChildren<Laser>();
@@ -14,13 +16,14 @@ public class Mirror : LaserGenerator
         if (isGenerating)
         {
             GetComponent<BoxCollider2D>().enabled = false;
-            laser.Cast(transform.position, Orientation);
+            laser.Cast(transform.position, orientation);
             GetComponent<BoxCollider2D>().enabled = true;
         }
     }
-    public void ActivateLaser(int newType)
+    public void ActivateLaser(Vector2 _orientation)
     {
         isGenerating = true;
-        laser.type = newType;
+        laser.type = type;
+        orientation = _orientation;
     }
 }

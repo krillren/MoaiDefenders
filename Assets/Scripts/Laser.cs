@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class Laser : MonoBehaviour
 {
     LineRenderer lineRenderer;
+    public int type = 0;
     [SerializeField] private GameObject LaserPrefab;
     public void Awake()
     {
@@ -13,6 +14,7 @@ public class Laser : MonoBehaviour
     }
     public void Cast(Vector2 Origin, Vector2 Orientation)
     {
+        SetColor();
         int layer_mask = LayerMask.GetMask("Obstacles", "DragAndDropEntity");
         var hit = Physics2D.Raycast(transform.position, Orientation, 1000f, layer_mask);
         lineRenderer.SetPosition(0,Origin);
@@ -21,11 +23,11 @@ public class Laser : MonoBehaviour
             lineRenderer.SetPosition(1, hit.point);
             if (hit.collider.gameObject.tag == "Mirror")
             {
-                hit.collider.gameObject.GetComponent<Mirror>().isGenerating = true;
+                hit.collider.gameObject.GetComponent<Mirror>().ActivateLaser(type);
             }
             if (hit.collider.gameObject.tag == "Scindeur")
             {
-                hit.collider.gameObject.GetComponent<Scindeur>().isGenerating = true;
+                hit.collider.gameObject.GetComponent<Scindeur>().ActivateLaser(type);
             }
         }
         else
@@ -39,5 +41,23 @@ public class Laser : MonoBehaviour
     {
         lineRenderer.SetPosition(0,transform.position);
         lineRenderer.SetPosition(1,transform.position);
+    }
+    public void SetColor()
+    {
+        switch(type)
+        {
+            case 0:
+                lineRenderer.startColor = Color.red;
+                lineRenderer.endColor = Color.red;
+                break;
+            case 1:
+                lineRenderer.startColor = Color.green;
+                lineRenderer.endColor = Color.green;
+                break;
+            case 2:
+                lineRenderer.startColor = Color.blue;
+                lineRenderer.endColor = Color.blue;
+                break;
+        }
     }
 }

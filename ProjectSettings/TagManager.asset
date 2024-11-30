@@ -7,6 +7,7 @@ TagManager:
   - Dragable
   - Mirror
   - Scindeur
+  - LaserGenerator
   layers:
   - Default
   - TransparentFX

@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 96324296}
   m_Layer: 7
   m_Name: LaserGenerator
-  m_TagString: Dragable
+  m_TagString: LaserGenerator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragged: 0
+  dragManager: {fileID: 0}
   tilemap: {fileID: 218696049}
 --- !u!61 &96324294
 BoxCollider2D:
@@ -3436,6 +3437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragged: 0
+  dragManager: {fileID: 0}
   tilemap: {fileID: 218696049}
 --- !u!61 &437486556
 BoxCollider2D:
@@ -3915,6 +3917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragged: 0
+  dragManager: {fileID: 0}
   tilemap: {fileID: 218696049}
 --- !u!61 &1231635057
 BoxCollider2D:
@@ -4029,7 +4032,7 @@ MonoBehaviour:
   laser2: {fileID: 0}
   laser1: {fileID: 0}
   Orientation2: {x: 0, y: 1}
-  Orientation1: {x: 0, y: 0}
+  Orientation1: {x: 0, y: -1}
 --- !u!1 &1419459104
 GameObject:
   m_ObjectHideFlags: 0
@@ -4074,6 +4077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8499c023e72754ca1802c5849951f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Entities: {fileID: 447153569}
 --- !u!1001 &1658366248
 PrefabInstance:
   m_ObjectHideFlags: 0
