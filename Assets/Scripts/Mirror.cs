@@ -10,13 +10,13 @@ public class Mirror : Entity
     public static readonly Vector2[] Directions = new Vector2[]
     {
         new Vector2(0, 1),        // North
-        new Vector2(0.707f, 0.707f), // Northeast
+        //new Vector2(0.707f, 0.707f), // Northeast
         new Vector2(1, 0),        // East
-        new Vector2(0.707f, -0.707f), // Southeast
+        //new Vector2(0.707f, -0.707f), // Southeast
         new Vector2(0, -1),       // South
-        new Vector2(-0.707f, -0.707f), // Southwest
+        //new Vector2(-0.707f, -0.707f), // Southwest
         new Vector2(-1, 0),       // West
-        new Vector2(-0.707f, 0.707f)  // Northwest
+        //new Vector2(-0.707f, 0.707f)  // Northwest
     };
     public Laser laser;
     public Vector2 Orientation;
@@ -53,11 +53,5 @@ public class Mirror : Entity
     {
         base.StopGenerating();
         laser.Reset();
-    }
-    private Vector2 GetMousePosition()
-    {
-        Vector3 p = Input.mousePosition;
-        Vector3 pos = Camera.main.ScreenToWorldPoint(p);
-        return pos;
     }
 }

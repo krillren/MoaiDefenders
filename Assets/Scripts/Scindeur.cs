@@ -19,8 +19,8 @@ public class Scindeur : Entity
         GetComponent<BoxCollider2D>().enabled = false;
         if (isGenerating)
         {
-            Vector2 rotatedLaser1 = Rotate(castDirection, 45);
-            Vector2 rotatedLaser2 = Rotate(castDirection, -45);
+            Vector2 rotatedLaser1 = Rotate(castDirection, 0);
+            Vector2 rotatedLaser2 = Rotate(castDirection, -90);
             laser2.Cast(transform.position, rotatedLaser2);
             laser1.Cast(transform.position, rotatedLaser1);
         }
