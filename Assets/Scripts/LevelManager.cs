@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public void getLevel(int level_id)
+    public void getLevel(string SceneName)
     {
-        string level_name = "Assets/Scenes/Level" + levelID + ".unity";
+        SceneManager.LoadScene("Assets/Scenes/"+ SceneName +".unity");
     }
 }
