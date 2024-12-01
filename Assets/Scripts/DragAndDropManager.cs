@@ -17,10 +17,27 @@ public class DragAndDropManager : MonoBehaviour
             {
                 var point = hit.point;
                 Debug.Log(hit.collider.gameObject);
-                if (hit.collider.gameObject.tag == "LaserGenerator" || hit.collider.gameObject.tag == "Mirror" || hit.collider.gameObject.tag == "Scindeur" || hit.collider.gameObject.tag == "Inverter")
+                if (hit.collider.gameObject.tag == "LaserGenerator" || hit.collider.gameObject.tag == "Mirror" || hit.collider.gameObject.tag == "Scindeur" || hit.collider.gameObject.tag == "Inverter" || hit.collider.gameObject.tag == "Axicon")
                 {
                     hit.collider.gameObject.GetComponent<DragAndDropEntity>().isDragged = true;
                     PauseLasers();
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            LayerMask layermask = LayerMask.GetMask("DragAndDropEntity");
+            var hit = Physics2D.Raycast(GetMousePosition(), Vector2.down, 1000f, layermask);
+
+            if (hit.collider != null)
+            {
+                var point = hit.point;
+                Debug.Log(hit.collider.gameObject);
+                if (hit.collider.gameObject.tag == "Mirror" )
+                {
+                    hit.collider.gameObject.GetComponent<Mirror>().Rotate();
+                    PauseLasers();
+                    PlayLasers();
                 }
             }
         }

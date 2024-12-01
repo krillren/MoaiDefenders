@@ -30,22 +30,15 @@ public class Mirror : Entity
     {
         if (isGenerating)
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            // Check if the mouse is over this object's 2D collider
-            Collider2D collider = Physics2D.OverlapPoint(mousePosition);
-            if (Input.GetKeyUp(KeyCode.Mouse1) && collider != null && collider.gameObject == gameObject)
-            {
-                currentDirectionIndex = (currentDirectionIndex + 1) % Directions.Length;
-                Orientation = Directions[currentDirectionIndex];
-            }
             GetComponent<BoxCollider2D>().enabled = false;
+            
             laser.Cast(transform.position, Orientation);
             GetComponent<BoxCollider2D>().enabled = true;
         }
     }
-    public void ActivateLaser(MaterialsType type)
+    public void ActivateLaser(MaterialsType newType, Vector2 _orientation)
     {
+        if (_orientation + Orientation == Vector2.zero) Rotate();
         isGenerating = true;
         laser.type = type;
     }
@@ -53,5 +46,11 @@ public class Mirror : Entity
     {
         base.StopGenerating();
         laser.Reset();
+    }
+
+    public void Rotate()
+    {
+        currentDirectionIndex = (currentDirectionIndex + 1) % Directions.Length;
+        Orientation = Directions[currentDirectionIndex];
     }
 }

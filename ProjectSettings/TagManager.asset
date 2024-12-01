@@ -9,6 +9,9 @@ TagManager:
   - Scindeur
   - LaserGenerator
   - Inverter
+  - Axicon
+  - Obstacles
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - UI
   - Obstacles
   - DragAndDropEntity
-  - 
+  - Ground
   - 
   - 
   - 
