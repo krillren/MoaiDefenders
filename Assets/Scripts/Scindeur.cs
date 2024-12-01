@@ -34,7 +34,6 @@ public class Scindeur : Entity
                 currentAngleConfigurationIndex = (currentAngleConfigurationIndex + 1) % angleConfigurations.Length;
                 angleLaser1 = angleConfigurations[currentAngleConfigurationIndex][0];
                 angleLaser2 = angleConfigurations[currentAngleConfigurationIndex][1];
-                Debug.Log(currentAngleConfigurationIndex);
             }
             Vector2 rotatedLaser1 = Rotate(castDirection, angleLaser1);
             Vector2 rotatedLaser2 = Rotate(castDirection, angleLaser2);
@@ -63,10 +62,10 @@ public class Scindeur : Entity
         laser1.Reset();
         laser2.Reset();
     }
-    public void ActivateLaser(int newType)
+    public void ActivateLaser(MaterialsType type)
     {
         isGenerating = true;
-        laser1.type = newType;
-        laser2.type = newType;
+        laser1.type = type;
+        laser2.type = type;
     }
 }

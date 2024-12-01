@@ -44,10 +44,10 @@ public class Mirror : Entity
             GetComponent<BoxCollider2D>().enabled = true;
         }
     }
-    public void ActivateLaser(int newType)
+    public void ActivateLaser(MaterialsType type)
     {
         isGenerating = true;
-        laser.type = newType;
+        laser.type = type;
     }
     public override void StopGenerating()
     {
