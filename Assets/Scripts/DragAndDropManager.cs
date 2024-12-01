@@ -39,6 +39,12 @@ public class DragAndDropManager : MonoBehaviour
                     PauseLasers();
                     PlayLasers();
                 }
+                if (hit.collider.gameObject.tag == "Scindeur")
+                {
+                    hit.collider.gameObject.GetComponent<Scindeur>().RotateScindeur();
+                    PauseLasers();
+                    PlayLasers();
+                }
             }
         }
     }
