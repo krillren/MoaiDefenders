@@ -12,6 +12,7 @@ TagManager:
   - Axicon
   - Obstacles
   - Ground
+  - Destroyable
   layers:
   - Default
   - TransparentFX
