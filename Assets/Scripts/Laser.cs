@@ -1,20 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.Universal.ShaderGraph;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Laser : MonoBehaviour
 {
     LineRenderer lineRenderer;
-    public int type = 0;
+    private MaterialsType _type;
+    public MaterialsType type
+    {
+        get => _type;
+        set
+        {
+            _type = value;
+            Color laserColor = _type.ToColor();
+            lineRenderer.startColor = laserColor;
+            lineRenderer.endColor = laserColor;
+        }
+    }
     [SerializeField] private GameObject LaserPrefab;
     public void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        type = MaterialsType.Wood;
     }
     public void Cast(Vector2 Origin, Vector2 Orientation, float distance = 1000f)
     {
-        SetColor();
         int layer_mask = LayerMask.GetMask("Obstacles", "DragAndDropEntity");
         var hit = Physics2D.Raycast(transform.position, Orientation, distance, layer_mask);
         lineRenderer.SetPosition(0,Origin);
@@ -51,23 +64,5 @@ public class Laser : MonoBehaviour
     {
         lineRenderer.SetPosition(0,transform.position);
         lineRenderer.SetPosition(1,transform.position);
-    }
-    public void SetColor()
-    {
-        switch(type)
-        {
-            case 0:
-                lineRenderer.startColor = Color.red;
-                lineRenderer.endColor = Color.red;
-                break;
-            case 1:
-                lineRenderer.startColor = Color.green;
-                lineRenderer.endColor = Color.green;
-                break;
-            case 2:
-                lineRenderer.startColor = Color.blue;
-                lineRenderer.endColor = Color.blue;
-                break;
-        }
     }
 }

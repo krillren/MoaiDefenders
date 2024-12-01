@@ -36,7 +36,7 @@ public class Mirror : Entity
             GetComponent<BoxCollider2D>().enabled = true;
         }
     }
-    public void ActivateLaser(int newType, Vector2 _orientation)
+    public void ActivateLaser(MaterialsType newType, Vector2 _orientation)
     {
         if (_orientation + Orientation == Vector2.zero) Rotate();
         isGenerating = true;

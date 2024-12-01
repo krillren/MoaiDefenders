@@ -6,8 +6,8 @@ using UnityEngine;
 public class Axicon : Entity
 {
     public Laser laser;
+    public MaterialsType laserType;
     public Vector2 orientation = Vector2.zero;
-    public int type;
     public Tuple<Vector2, bool> incLaser1;
     public Tuple<Vector2, bool> incLaser2;
     public static readonly Vector2[] Directions = new Vector2[]
@@ -50,7 +50,7 @@ public class Axicon : Entity
         {
             incLaser2 = new Tuple<Vector2, bool>(_orientation, true);
             isGenerating = true;
-            laser.type = type;
+            laser.type = laserType;
             orientation = _orientation;
         }
         
