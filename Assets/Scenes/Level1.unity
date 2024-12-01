@@ -4953,9 +4953,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 447153571}
     m_Modifications:
+    - target: {fileID: -6685078209797765353, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
+      propertyPath: Material
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5897068771791042417, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
       propertyPath: m_Name
       value: Material
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897068771791042417, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6631202508478340654, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
       propertyPath: m_RootOrder
@@ -5007,6 +5015,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6631202508478340654, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757398271952041767, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757398271952041767, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757398271952041767, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757398271952041767, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7757398271952041767, guid: 3382853bf2a726e4d8e1f0b31736dd70, type: 3}
+      propertyPath: m_LayerOverridePriority
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5401,6 +5429,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 447153571}
     m_Modifications:
+    - target: {fileID: 3346117099235663826, guid: 991ab7cd524fbd543904a894791d812a, type: 3}
+      propertyPath: laserType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5312504226772655695, guid: 991ab7cd524fbd543904a894791d812a, type: 3}
       propertyPath: tilemap
       value: 
