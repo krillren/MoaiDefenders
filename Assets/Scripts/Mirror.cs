@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngineInternal;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Mirror : Entity
@@ -29,7 +30,11 @@ public class Mirror : Entity
     {
         if (isGenerating)
         {
-            if (Input.GetKeyUp(KeyCode.Mouse1))
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            // Check if the mouse is over this object's 2D collider
+            Collider2D collider = Physics2D.OverlapPoint(mousePosition);
+            if (Input.GetKeyUp(KeyCode.Mouse1) && collider != null && collider.gameObject == gameObject)
             {
                 currentDirectionIndex = (currentDirectionIndex + 1) % Directions.Length;
                 Orientation = Directions[currentDirectionIndex];
@@ -48,5 +53,11 @@ public class Mirror : Entity
     {
         base.StopGenerating();
         laser.Reset();
+    }
+    private Vector2 GetMousePosition()
+    {
+        Vector3 p = Input.mousePosition;
+        Vector3 pos = Camera.main.ScreenToWorldPoint(p);
+        return pos;
     }
 }
