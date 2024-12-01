@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering.Universal.ShaderGraph;
@@ -9,6 +10,8 @@ public class Laser : MonoBehaviour
 {
     LineRenderer lineRenderer;
     private MaterialsType _type;
+    public Vector2 lastCast;
+    public Vector2 lastPosition;
     public MaterialsType type
     {
         get => _type;
@@ -34,6 +37,8 @@ public class Laser : MonoBehaviour
         if(hit.collider != null)
         {
             lineRenderer.SetPosition(1, hit.point);
+            lastCast = Orientation;
+            lastPosition = transform.position;
             if (hit.collider.gameObject.tag == "Mirror")
             {
                 hit.collider.gameObject.GetComponent<Mirror>().ActivateLaser(type,Orientation);
@@ -50,7 +55,9 @@ public class Laser : MonoBehaviour
             }
             if(hit.collider.gameObject.tag == "Axicon")
             {
-                hit.collider.gameObject.GetComponent<Axicon>().ActivateLaser(type, Orientation);
+                var axicon = hit.collider.gameObject.GetComponent<Axicon>();
+                if (!axicon.IsLaserAlreadyColliding(this)) axicon.addCollision(new Tuple<Laser, Vector2, Vector2>(this, Orientation, transform.position));
+                axicon.ActivateLaser(type);
             }
             if (hit.collider.gameObject.tag == "Destroyable")
             {
