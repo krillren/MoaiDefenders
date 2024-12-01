@@ -25,9 +25,13 @@ public class DragAndDropEntity : MonoBehaviour
     private void Drop()
     {
         isDragged = false; // Arr?ter de suivre la souris
+        LayerMask layerMask = LayerMask.GetMask("DragAndDropEntity","Obstacles");
         RaycastHit2D hit = Physics2D.Raycast(GetMousePosition(), Vector2.down);
-        
-        if (hit.collider != null && hit.collider.gameObject.tag != "Obstacles" && hit.collider.gameObject.tag != "DragAndDropEntity")
+        GetComponent<BoxCollider2D>().enabled = false;
+        RaycastHit2D obstacleHit = Physics2D.Raycast(GetMousePosition(), Vector2.down,layerMask);
+        GetComponent<BoxCollider2D>().enabled = true;
+
+        if (hit.collider != null && obstacleHit.collider.tag == "Ground")
         {
             var point = hit.point;
             Debug.Log("Drop on : " + hit.collider.gameObject.tag);
