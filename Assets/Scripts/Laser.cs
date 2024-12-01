@@ -50,12 +50,13 @@ public class Laser : MonoBehaviour
             }
             if(hit.collider.gameObject.tag == "Axicon")
             {
-                hit.collider.gameObject.GetComponent<Axicon>().ActivateLaser(Orientation);
+                hit.collider.gameObject.GetComponent<Axicon>().ActivateLaser(type, Orientation);
             }
             if (hit.collider.gameObject.tag == "Destroyable")
             {
                 var destroyable = hit.collider.gameObject.GetComponent<Destroyable>();
-                if (destroyable.Material == type)
+                var parent = transform.parent;
+                if (destroyable.Material == type && parent.CompareTag("Axicon"))
                 {
                     destroyable.isDestroyed = true;
                 }

@@ -6,7 +6,6 @@ using UnityEngine;
 public class Axicon : Entity
 {
     public Laser laser;
-    public MaterialsType laserType;
     public Vector2 orientation = Vector2.zero;
     public Tuple<Vector2, bool> incLaser1;
     public Tuple<Vector2, bool> incLaser2;
@@ -38,7 +37,7 @@ public class Axicon : Entity
             GetComponent<BoxCollider2D>().enabled = true;
         }
     }
-    public void ActivateLaser(Vector2 _orientation)
+    public void ActivateLaser(MaterialsType type, Vector2 _orientation)
     {
         if(!incLaser1.Item2)
         {
@@ -50,7 +49,7 @@ public class Axicon : Entity
         {
             incLaser2 = new Tuple<Vector2, bool>(_orientation, true);
             isGenerating = true;
-            laser.type = laserType;
+            laser.type = type;
             orientation = _orientation;
         }
         
