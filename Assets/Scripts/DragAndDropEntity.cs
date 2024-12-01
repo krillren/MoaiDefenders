@@ -27,10 +27,10 @@ public class DragAndDropEntity : MonoBehaviour
         isDragged = false; // Arr?ter de suivre la souris
         RaycastHit2D hit = Physics2D.Raycast(GetMousePosition(), Vector2.down);
         
-        if (hit.collider != null)
+        if (hit.collider != null && hit.collider.gameObject.tag != "Obstacles" && hit.collider.gameObject.tag != "DragAndDropEntity")
         {
             var point = hit.point;
-            Debug.Log("Point: " + point);
+            Debug.Log("Drop on : " + hit.collider.gameObject.tag);
             var tilePos = tilemap.WorldToCell(point);
             var spriteRenderer = GetComponent<SpriteRenderer>();
             transform.position = new Vector3(tilePos.x + spriteRenderer.bounds.size.x / 2, tilePos.y + spriteRenderer.bounds.size.y / 2, transform.position.z);
@@ -39,8 +39,6 @@ public class DragAndDropEntity : MonoBehaviour
         }
         else
         {
-            // Si rien n'est touch?, remettre l'objet ? sa position d'origine
-            Debug.Log("Aucun objet touch?. R?initialisation.");
             Reset();
         }
     }

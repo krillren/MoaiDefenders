@@ -12,18 +12,18 @@ public class Laser : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
     }
-    public void Cast(Vector2 Origin, Vector2 Orientation)
+    public void Cast(Vector2 Origin, Vector2 Orientation, float distance = 1000f)
     {
         SetColor();
         int layer_mask = LayerMask.GetMask("Obstacles", "DragAndDropEntity");
-        var hit = Physics2D.Raycast(transform.position, Orientation, 1000f, layer_mask);
+        var hit = Physics2D.Raycast(transform.position, Orientation, distance, layer_mask);
         lineRenderer.SetPosition(0,Origin);
         if(hit.collider != null)
         {
             lineRenderer.SetPosition(1, hit.point);
             if (hit.collider.gameObject.tag == "Mirror")
             {
-                hit.collider.gameObject.GetComponent<Mirror>().ActivateLaser(type);
+                hit.collider.gameObject.GetComponent<Mirror>().ActivateLaser(type,Orientation);
             }
             if (hit.collider.gameObject.tag == "Scindeur")
             {
@@ -35,10 +35,14 @@ public class Laser : MonoBehaviour
             {
                 hit.collider.gameObject.GetComponent<Inverter>().ActivateLaser(Orientation);
             }
+            if(hit.collider.gameObject.tag == "Axicon")
+            {
+                hit.collider.gameObject.GetComponent<Axicon>().ActivateLaser(Orientation);
+            }
         }
         else
         {
-            lineRenderer.SetPosition(1, Orientation * 1000f);
+            lineRenderer.SetPosition(1, Orientation * distance);
         }
         
         

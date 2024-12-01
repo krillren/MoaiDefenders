@@ -9,6 +9,8 @@ TagManager:
   - Scindeur
   - LaserGenerator
   - Inverter
+  - Axicon
+  - Obstacles
   layers:
   - Default
   - TransparentFX
