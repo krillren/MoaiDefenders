@@ -26,15 +26,6 @@ public class Scindeur : Entity
     {
         if (isGenerating)
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            Collider2D collider = Physics2D.OverlapPoint(mousePosition);
-            if (Input.GetKeyUp(KeyCode.Mouse1) && collider != null && collider.gameObject == gameObject)
-            {
-                currentAngleConfigurationIndex = (currentAngleConfigurationIndex + 1) % angleConfigurations.Length;
-                angleLaser1 = angleConfigurations[currentAngleConfigurationIndex][0];
-                angleLaser2 = angleConfigurations[currentAngleConfigurationIndex][1];
-            }
             Vector2 rotatedLaser1 = Rotate(castDirection, angleLaser1);
             Vector2 rotatedLaser2 = Rotate(castDirection, angleLaser2);
             GetComponent<BoxCollider2D>().enabled = false;
@@ -54,8 +45,17 @@ public class Scindeur : Entity
         float y = v.x * sinTheta + v.y * cosTheta;
 
         return new Vector2(x, y);
+        
     }
+    public void RotateScindeur() {
 
+            currentAngleConfigurationIndex = (currentAngleConfigurationIndex + 1) % angleConfigurations.Length;
+            angleLaser1 = angleConfigurations[currentAngleConfigurationIndex][0];
+            angleLaser2 = angleConfigurations[currentAngleConfigurationIndex][1];
+
+            
+            
+        }
     public override void StopGenerating()
     {
         base.StopGenerating();

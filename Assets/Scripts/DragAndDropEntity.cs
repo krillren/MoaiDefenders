@@ -13,6 +13,7 @@ public class DragAndDropEntity : MonoBehaviour
     {
         originalPosition = transform.position;
         dragManager = FindAnyObjectByType<DragAndDropManager>();
+        tilemap = FindAnyObjectByType<Grid>();
     }
     private void Update()
     {
