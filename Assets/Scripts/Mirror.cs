@@ -40,7 +40,7 @@ public class Mirror : Entity
     {
         if (_orientation + Orientation == Vector2.zero) Rotate();
         isGenerating = true;
-        laser.type = type;
+        laser.type = newType;
     }
     public override void StopGenerating()
     {

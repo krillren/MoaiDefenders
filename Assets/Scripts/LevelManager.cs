@@ -7,6 +7,6 @@ public class LevelManager : MonoBehaviour
 {
     public void getLevel(int level_id)
     {
-        string level_name = "Assets/Scenes/Level" + levelID + ".unity";
+        string level_name = "Assets/Scenes/Level" + level_id + ".unity";
     }
 }
